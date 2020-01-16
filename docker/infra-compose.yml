@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  keycloak:
+      image: jboss/keycloak:latest
+      environment:
+        DB_VENDOR: h2
+        DB_DATABASE: keycloak
+        DB_USER: keycloak
+        DB_PASSWORD: password
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: admin
+      ports:
+        - 8080:8080
+  nginx:
+      image: nginx/latest
+      restart: always
+      build:
+        context: ./nginx
+        dockerfile: Dockerfile
+      ports:
+        - 8888:8888
+
