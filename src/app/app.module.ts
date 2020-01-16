@@ -1,25 +1,38 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, ApplicationRef, DoBootstrap, NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AuthModule} from './auth/auth.module';
-import {KeycloakService} from './auth/keycloak.service';
+import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
+import {initializer} from './utils/keycloak-init';
+import { CadastroComponent } from './components/cadastro/cadastro.component';
+import { RelatorioComponent } from './components/relatorio/relatorio.component';
+
+const keycloakService = new KeycloakService();
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CadastroComponent,
+    RelatorioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AuthModule
+    KeycloakAngularModule
   ],
   providers: [
-    KeycloakService
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializer,
+      multi: true,
+      deps: [KeycloakService]
+    }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule{
+
+}
