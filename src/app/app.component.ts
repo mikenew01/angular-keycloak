@@ -10,6 +10,7 @@ import {KeycloakProfile} from 'keycloak-js';
 export class AppComponent implements OnInit {
 
   userDetails: KeycloakProfile;
+  roles: string[];
 
   constructor(private keycloakService: KeycloakService) {
   }
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     if( await this.keycloakService.isLoggedIn()) {
       this.userDetails = await this.keycloakService.loadUserProfile();
+      this.roles = await this.keycloakService.getUserRoles(true);
     }
   }
 

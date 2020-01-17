@@ -4,26 +4,21 @@ import {APP_INITIALIZER, NgModule} from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
-import {initializer} from './utils/keycloak-init';
-import { CadastroComponent } from './components/cadastro/cadastro.component';
-import { RelatorioComponent } from './components/relatorio/relatorio.component';
+import { KeycloakService } from 'keycloak-angular';
+import {initializer} from './auth/factories/keycloak-init';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {TokenInterceptor} from './utils/token.interceptor';
-
-const keycloakService = new KeycloakService();
+import {TokenInterceptor} from './auth/interceptors/token.interceptor';
+import {AuthModule} from './auth/auth.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CadastroComponent,
-    RelatorioComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    KeycloakAngularModule
+    AuthModule
   ],
   providers: [
     {

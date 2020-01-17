@@ -15,9 +15,6 @@ export class AppAuthGuard extends KeycloakAuthGuard {
         return;
       }
 
-      console.log('role restriction given at app-routing.module for this route', route.data.roles);
-      console.log('User roles coming after login from keycloak :', this.roles);
-
       const requiredRoles = route.data.roles;
       if (!requiredRoles || requiredRoles.length === 0) {
         return resolve(true);
@@ -25,13 +22,16 @@ export class AppAuthGuard extends KeycloakAuthGuard {
         if (!this.roles || this.roles.length === 0) {
           resolve(false);
         }
+
         let granted: boolean = false;
+
         for (const requiredRole of requiredRoles) {
           if (this.roles.indexOf(requiredRole) > -1) {
             granted = true;
             break;
           }
         }
+
         resolve(granted);
       }
     });

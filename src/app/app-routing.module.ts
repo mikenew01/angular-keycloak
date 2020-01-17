@@ -1,27 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {CadastroComponent} from './components/cadastro/cadastro.component';
-import {AppAuthGuard} from './app.authguard';
-import {RelatorioComponent} from './components/relatorio/relatorio.component';
-
+import {AppAuthGuard} from './auth/services/app.authguard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/cadastros',
+    redirectTo: '',
     pathMatch: 'full'
   },
   {
-    path: 'cadastros',
-    component: CadastroComponent,
-    canActivate: [AppAuthGuard],
-    data: {roles: ['admin', 'user']}
-  },
-  {
-    path: 'relatorios',
-    component: RelatorioComponent,
-    canActivate: [AppAuthGuard],
-    data: {roles: ['admin']}
+   path: 'users',
+   loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
   }
 ];
 

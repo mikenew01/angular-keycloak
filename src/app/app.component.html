@@ -1,6 +1,14 @@
 <nav>
-  <a routerLink="/cadastros" routerLinkActive="active">Cadastros</a>
-  <a routerLink="/relatorios" routerLinkActive="active">Relatorios</a>
+  <a routerLink="/users/" routerLinkActive="active">Lista Usuarios</a>
+  <a routerLink="/users/create" routerLinkActive="active">Criar Usuario</a>
 </nav>
 
+<a (click)="doLogout()">Logout</a>
+
 <router-outlet></router-outlet>
+
+
+<pre>
+  {{userDetails.firstName}}
+  {{roles}}
+</pre>
