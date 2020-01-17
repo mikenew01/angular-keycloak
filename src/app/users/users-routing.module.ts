@@ -13,31 +13,31 @@ const routes: Routes = [
     path: '',
     component: UserListComponent,
     canActivate: [AppAuthGuard],
-    data: {roles: ['user', 'admin']}
+    data: {roles: ['list']}
   },
   {
     path: 'create',
     component: UserCreateComponent,
     canActivate: [AppAuthGuard],
-    data: {roles: ['admin']}
+    data: {roles: ['create']}
   },
   {
     path: 'detail/:id',
     component: UserDetailComponent,
     canActivate: [AppAuthGuard],
-    data: {roles: ['user', 'admin']}
+    data: {roles: ['detail']}
   },
   {
     path: 'delete/:id',
     component: UserDeleteComponent,
     canActivate: [AppAuthGuard],
-    data: {roles: ['user', 'admin']}
+    data: {roles: ['delete']}
   },
   {
     path: 'update/:id',
     component: UserUpdateComponent,
     canActivate: [AppAuthGuard],
-    data: {roles: ['user', 'admin']}
+    data: {roles: ['update']}
   }
 ];
 
