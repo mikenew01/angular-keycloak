@@ -14,12 +14,14 @@ const routes: Routes = [
   {
     path: 'cadastros',
     component: CadastroComponent,
-    canActivate: [AppAuthGuard]
+    canActivate: [AppAuthGuard],
+    data: {roles: ['admin', 'user']}
   },
   {
     path: 'relatorios',
     component: RelatorioComponent,
-    canActivate: [AppAuthGuard]
+    canActivate: [AppAuthGuard],
+    data: {roles: ['admin']}
   }
 ];
 
