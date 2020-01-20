@@ -1,17 +1,20 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map, shareReplay} from 'rxjs/operators';
 import {AuthService} from './auth/services/auth.service';
+import {KeycloakProfile} from 'keycloak-js';
 
 @Component({
   selector: 'key-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  userLogged: Observable<KeycloakProfile>;
+
+   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
@@ -19,9 +22,11 @@ export class AppComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private breakpointObserver: BreakpointObserver) {
+    this.userLogged = this.authService.getUserLogged();
   }
 
   ngOnInit() {
+
   }
 
   public doLogout() {
@@ -30,6 +35,10 @@ export class AppComponent implements OnInit {
 
   public hasRole(role: string): boolean {
     return this.authService.userHasRole(role);
+  }
+
+  ngAfterViewInit(): void {
+
   }
 
 }

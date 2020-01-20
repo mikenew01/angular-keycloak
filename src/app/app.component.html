@@ -7,6 +7,7 @@
     <mat-nav-list>
       <a mat-list-item href="/"><mat-icon>home</mat-icon> Início</a>
       <a *ngIf="hasRole('users')" mat-list-item href="/users"><mat-icon>peoples</mat-icon> Usuários</a>
+      <a *ngIf="hasRole('items')" mat-list-item href="/items"><mat-icon>dashboard</mat-icon> Items</a>
       <a mat-list-item (click)="doLogout()"><mat-icon>close</mat-icon></a>
     </mat-nav-list>
   </mat-sidenav>
@@ -21,7 +22,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>POC - Keycloak Application</span>
+      <span><strong>Usuário: {{(userLogged | async)?.username}} </strong></span>
     </mat-toolbar>
 
     <router-outlet></router-outlet>

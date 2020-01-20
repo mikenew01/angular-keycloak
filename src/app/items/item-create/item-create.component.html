@@ -1,0 +1,25 @@
+<div class="container">
+  <section class="crud-container" fxLayout="row wrap" fxLayoutAlign="center center">
+    <mat-card fxFlex="500px" fxFlex.xs="100%">
+      <mat-card-title>Novo item</mat-card-title>
+      <form [formGroup]="basicForm" autocomplete="off" novalidate (ngSubmit)="create(basicForm.value)"
+            fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+
+        <mat-card-content>
+          <mat-form-field>
+            <input matInput type="text" placeholder="Nome" formControlName="name" id="name">
+            <mat-hint align="end">Não pode ultrapassar 50 caracters.</mat-hint>
+            <mat-error *ngIf="hasError('name', 'required')">Descrição é obrigatória</mat-error>
+            <mat-error *ngIf="hasError('name', 'maxlength')">Você tem mais de 50 caracters</mat-error>
+          </mat-form-field>
+
+        </mat-card-content>
+        <mat-card-actions align="center">
+          <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancelar</button>
+          <button mat-raised-button color="primary" [disabled]="!basicForm.valid">Salvar</button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </section>
+
+</div>

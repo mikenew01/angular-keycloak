@@ -13,6 +13,12 @@ const routes: Routes = [
     loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
     canActivate: [AppAuthGuard],
     data: {roles: ['users']}
+  },
+  {
+    path: 'items',
+    loadChildren: () => import('./items/items.module').then(i => i.ItemsModule),
+    canActivate: [AppAuthGuard],
+    data: {roles: ['items']}
   }
 ];
 

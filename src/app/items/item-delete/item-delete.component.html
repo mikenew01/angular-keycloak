@@ -1,0 +1,26 @@
+<div class="container">
+  <section fxLayout="row wrap" fxLayoutAlign="center center">
+    <mat-card fxFlex="500px" fxFlex.xs="100%">
+
+      <mat-card-title>Excluir item</mat-card-title>
+      <mat-card-content>
+        <div fxLayout="column wrap" fxLayoutGap="40px">
+          <div fxLayout="row wrap" fxFlex>
+            <div fxFlex><strong>Nome usuário:</strong></div>
+            <div fxFlex>{{item?.name}}</div>
+          </div>
+
+          <div fxLayout="row wrap" fxFlex>
+            <div fxFlex><strong>E-mail usuário:</strong></div>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions align="center">
+        <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancelar</button>
+        <button mat-raised-button color="primary" (click)="delete()">Confirmar</button>
+      </mat-card-actions>
+
+    </mat-card>
+  </section>
+
+</div>
