@@ -1,12 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {KeycloakService} from 'keycloak-angular';
-import {KeycloakProfile} from 'keycloak-js';
-
-export interface MenuItem {
-  descricao: string;
-  url: string;
-  perfil: string[];
-}
+import {Observable} from 'rxjs';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {map, shareReplay} from 'rxjs/operators';
+import {AuthService} from './auth/services/auth.service';
 
 @Component({
   selector: 'key-root',
@@ -15,32 +12,25 @@ export interface MenuItem {
 })
 export class AppComponent implements OnInit {
 
-  userDetails: KeycloakProfile;
-  roles: string[];
-  menus: MenuItem[] = [
-    {
-      descricao: 'Usuários',
-      url: '/users',
-      perfil: ['list']
-    }
-  ];
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
 
-  constructor(private keycloakService: KeycloakService) {
+  constructor(private authService: AuthService,
+              private breakpointObserver: BreakpointObserver) {
   }
 
-  async ngOnInit() {
-    if( await this.keycloakService.isLoggedIn()) {
-      this.userDetails = await this.keycloakService.loadUserProfile();
-      this.roles = await this.keycloakService.getUserRoles(true);
-    }
+  ngOnInit() {
   }
 
-  getPermissao(perfil: string): boolean {
-    return this.keycloakService.isUserInRole(perfil);
+  public doLogout() {
+    this.authService.logout();
   }
 
-  async doLogout() {
-    await this.keycloakService.logout();
+  public hasRole(role: string): boolean {
+    return this.authService.userHasRole(role);
   }
 
 }

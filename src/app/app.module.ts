@@ -12,6 +12,7 @@ import {AuthModule} from './auth/auth.module';
 import {MaterialModule} from './material/material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {CoreModule} from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule} from '
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    CoreModule
   ],
   providers: [
     {

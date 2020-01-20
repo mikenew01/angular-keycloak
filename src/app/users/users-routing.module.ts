@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {UserListComponent} from './user-list/user-list.component';
 import {UserCreateComponent} from './user-create/user-create.component';
-import {UserDetailComponent} from './user-detail/user-detail.component';
 import {UserDeleteComponent} from './user-delete/user-delete.component';
 import {UserUpdateComponent} from './user-update/user-update.component';
 import {AppAuthGuard} from '../auth/services/app.authguard';
@@ -20,12 +19,6 @@ const routes: Routes = [
     component: UserCreateComponent,
     canActivate: [AppAuthGuard],
     data: {roles: ['create']}
-  },
-  {
-    path: 'detail/:id',
-    component: UserDetailComponent,
-    canActivate: [AppAuthGuard],
-    data: {roles: ['detail']}
   },
   {
     path: 'delete/:id',

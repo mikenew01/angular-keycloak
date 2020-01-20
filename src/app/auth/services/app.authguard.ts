@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { KeycloakService, KeycloakAuthGuard } from 'keycloak-angular';
 
 @Injectable()
@@ -16,6 +16,7 @@ export class AppAuthGuard extends KeycloakAuthGuard {
       }
 
       const requiredRoles = route.data.roles;
+
       if (!requiredRoles || requiredRoles.length === 0) {
         return resolve(true);
       } else {

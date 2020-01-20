@@ -9,8 +9,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-   path: 'users',
-   loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
+    path: 'users',
+    loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
+    canActivate: [AppAuthGuard],
+    data: {roles: ['users']}
   }
 ];
 
