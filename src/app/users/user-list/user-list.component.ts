@@ -36,6 +36,18 @@ export class UserListComponent implements OnInit, AfterViewInit {
       { id: '2', name: 'Usuário 2', email: 'usuario2gmail.com' },
       { id: '3', name: 'Usuário 3', email: 'usuario3@gmail.com' },
       { id: '4', name: 'Usuário 4', email: 'usuario4@gmail.com' },
+      { id: '5', name: 'Usuário 1', email: 'usuario1@gmail.com' },
+      { id: '6', name: 'Usuário 2', email: 'usuario2gmail.com' },
+      { id: '7', name: 'Usuário 3', email: 'usuario3@gmail.com' },
+      { id: '8', name: 'Usuário 4', email: 'usuario4@gmail.com' },
+      { id: '9', name: 'Usuário 1', email: 'usuario1@gmail.com' },
+      { id: '10', name: 'Usuário 2', email: 'usuario2gmail.com' },
+      { id: '11', name: 'Usuário 3', email: 'usuario3@gmail.com' },
+      { id: '12', name: 'Usuário 4', email: 'usuario4@gmail.com' },
+      { id: '13', name: 'Usuário 1', email: 'usuario1@gmail.com' },
+      { id: '14', name: 'Usuário 2', email: 'usuario2gmail.com' },
+      { id: '15', name: 'Usuário 3', email: 'usuario3@gmail.com' },
+      { id: '16', name: 'Usuário 4', email: 'usuario4@gmail.com' },
     ] ;
 
     this.changeDetectorRefs.detectChanges();

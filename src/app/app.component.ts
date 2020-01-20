@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {KeycloakService} from 'keycloak-angular';
 import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map, shareReplay} from 'rxjs/operators';

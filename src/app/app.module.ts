@@ -9,7 +9,6 @@ import {initializer} from './auth/factories/keycloak-init';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from './auth/interceptors/token.interceptor';
 import {AuthModule} from './auth/auth.module';
-import {MaterialModule} from './material/material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {CoreModule} from './core/core.module';
@@ -23,7 +22,6 @@ import {CoreModule} from './core/core.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     AuthModule,
-    MaterialModule,
     FlexLayoutModule,
     MatToolbarModule,
     MatIconModule,
