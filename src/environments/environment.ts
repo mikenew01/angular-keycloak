@@ -4,9 +4,10 @@
 
 export const environment = {
   production: false,
-  KEYCLOAK_URL: 'http://localhost:8888/auth',
+  KEYCLOAK_URL: `http://localhost:8888/auth`,
   KEYCLOAK_REALM: 'desenvolvimento',
-  KEYCLOAK_CLIENT_ID: 'sian'
+  KEYCLOAK_CLIENT_ID: 'sian',
+  KEYCLOAK_CLIENT_SECRET: 'fdff3b18-7adc-471b-910e-c37ac4bd9e79'
 };
 
 /*

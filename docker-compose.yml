@@ -28,15 +28,25 @@ services:
 
   nginx:
     network_mode: host
-    image: nginx:stable-alpine
     restart: on-failure
     build:
-      context: ./nginx
+      context: ./docker/nginx
       dockerfile: Dockerfile
     ports:
       - 8888:8888
-      - 4200:4200
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+    - .:/app
+    - /app/node_modules
+    ports:
+    - 4200:4200
 
 volumes:
   postgres_data:
     driver: local
+
+
